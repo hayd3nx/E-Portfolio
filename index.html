@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BA2026 E-Portfolio | Temerbekova Tamilya (AIB-2604)</title>
+  <style>
+    :root {
+      --primary: #0f172a;
+      --secondary: #1e293b;
+      --accent: #0284c7;
+      --accent-hover: #0369a1;
+      --gold: #d97706;
+      --surface: #f8fafc;
+      --border: #cbd5e1;
+      --text: #1e293b;
+      --muted: #475569;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #f1f5f9;
+      color: var(--text);
+      line-height: 1.55;
+    }
+    .top-bar {
+      background: var(--primary);
+      color: #fff;
+      padding: 20px 28px;
+      border-bottom: 4px solid var(--gold);
+    }
+    .top-bar-inner {
+      max-width: 1240px;
+      margin: 0 auto;
+    }
+    .hero-kicker {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #38bdf8;
+      margin-bottom: 6px;
+    }
+    .hero-title {
+      font-size: 24px;
+      font-weight: 800;
+      margin: 0 0 8px 0;
+      color: #fff;
+    }
+    .hero-sub {
+      font-size: 14px;
+      color: #e2e8f0;
+      margin: 0;
+    }
+    .nav-bar {
+      background: var(--secondary);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+    .nav-inner {
+      max-width: 1240px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      padding: 8px 16px;
+    }
+    .tab-btn {
+      background: transparent;
+      color: #cbd5e1;
+      border: 1px solid transparent;
+      padding: 8px 14px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .tab-btn:hover {
+      background: rgba(255,255,255,0.08);
+      color: #fff;
+    }
+    .tab-btn.active {
+      background: var(--accent);
+      color: #fff;
+    }
+    .container {
+      max-width: 1240px;
+      margin: 24px auto;
+      padding: 0 20px 48px 20px;
+    }
+    .tab-panel {
+      display: none;
+      background: #fff;
+      border-radius: 10px;
+      padding: 28px 32px;
+      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.06);
+      border: 1px solid var(--border);
+    }
+    .tab-panel.active {
+      display: block;
+    }
+    .panel-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 12px;
+      margin-bottom: 20px;
+    }
+    .panel-header h1 {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--primary);
+      margin: 0;
+    }
+    .copy-btn {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .copy-btn:hover {
+      background: var(--accent-hover);
+    }
+    h2 {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--primary);
+      margin: 22px 0 10px 0;
+      padding-top: 8px;
+      border-top: 1px solid #e2e8f0;
+    }
+    .callout {
+      background: #f0f9ff;
+      border-left: 4px solid var(--accent);
+      border-radius: 6px;
+      padding: 14px 18px;
+      margin: 14px 0;
+    }
+    .callout-title {
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 6px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 14px 0 20px 0;
+      font-size: 13.5px;
+    }
+    th, td {
+      text-align: left;
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      vertical-align: top;
+    }
+    th {
+      background: var(--primary);
+      color: #fff;
+      font-weight: 700;
+    }
+    tbody tr:nth-child(even) {
+      background: var(--surface);
+    }
+    a {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #059669;
+      color: #fff;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-weight: 600;
+      display: none;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      z-index: 999;
+    }
+  </style>
+</head>
+<body>
+  <header class="top-bar">
+    <div class="top-bar-inner">
+      <div class="hero-kicker">Astana IT University · School of Digital Public Administration · Business Administration (BA2026 · 5 ECTS)</div>
+      <div class="hero-title">BA2026 E-Portfolio &amp; AI-Enabled Business Impact Hub</div>
+      <div class="hero-sub">Student: <strong>Temerbekova Tamilya</strong> &nbsp;|&nbsp; ID: <strong>260060</strong> &nbsp;|&nbsp; Group: <strong>AIB-2604</strong> &nbsp;|&nbsp; Company A (Comparator): <strong>Cameco Corporation</strong> &nbsp;|&nbsp; Company B (Focal): <strong>JSC NAC "Kazatomprom"</strong></div>
+    </div>
+  </header>
+
+  <nav class="nav-bar">
+    <div class="nav-inner">
+      <button class="tab-btn active" onclick="showTab(0)" id="btn-0">00 Home</button>
+      <button class="tab-btn" onclick="showTab(1)" id="btn-1">01 Company Profiles</button>
+      <button class="tab-btn" onclick="showTab(2)" id="btn-2">02 Weekly Evidence (W1–W9)</button>
+      <button class="tab-btn" onclick="showTab(3)" id="btn-3">03 Attestations (A1–A4)</button>
+      <button class="tab-btn" onclick="showTab(4)" id="btn-4">04 Final Capstone &amp; Script</button>
+      <button class="tab-btn" onclick="showTab(5)" id="btn-5">05 Evidence + Verification</button>
+      <button class="tab-btn" onclick="showTab(6)" id="btn-6">06 Responsible AI Use</button>
+      <button class="tab-btn" onclick="showTab(7)" id="btn-7">07 Reflection &amp; Checklist</button>
+    </div>
+  </nav>
+
+  <div class="container">
+    
+    <!-- SECTION 00 -->
+    <section class="tab-panel active" id="panel-0">
+      <div class="panel-header">
+        <h1>Section 00 — Home / Executive Decision</h1>
+        <button class="copy-btn" onclick="copyPanel(0)">Скопировать раздел для Google Sites</button>
+      </div>
+      <div class="panel-content" id="content-0">
+        <table>
+          <thead>
+            <tr>
+              <th style="width:22%;">Portfolio Field</th>
+              <th style="width:78%;">Verified Submission Record</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Student, ID &amp; Group</strong></td><td>Temerbekova Tamilya · Student ID: <strong>260060</strong> · Group: <strong>AIB-2604</strong> · School of Digital Public Administration, Astana IT University</td></tr>
+            <tr><td><strong>Course &amp; Term</strong></td><td>Business Administration (BA2026, 5 ECTS) · Year 1, Trimester 1 (Weeks 1–10 Progressive E-Portfolio + Final Capstone)</td></tr>
+            <tr><td><strong>Company A (Comparator)</strong></td><td>Cameco Corporation (Saskatoon, Canada) — Underground hard-rock uranium producer (McArthur River, Cigar Lake) &amp; 49% Westinghouse owner [5]</td></tr>
+            <tr><td><strong>Company B (Focal)</strong></td><td>JSC National Atomic Company "Kazatomprom" (Astana, Kazakhstan) — World's #1 primary uranium producer (~23% global share, 100% ISR extraction across 26 deposits / 12 JVs) [3], [4]</td></tr>
+            <tr><td><strong>Complete File Inventory Integrated</strong></td><td>All 18 BA2026 student artifacts integrated: <code>W1</code> Environment Scan &amp; A1 Appendix; <code>W2</code> Activity 3 Stakeholder-Ethics Map &amp; A1 Appendix; <code>W3</code> Activity 3 Business Model Stress Test &amp; Exit Ticket; <code>W4</code> Activity 3 5-Task Allocation Matrix &amp; A2 Video Essay/Script; <code>W5</code> 6-Step ISR Predictive Maintenance Process Map; <code>W6</code> B2B Marketing Comparison; <code>W7</code> 7-Stage Governance Workflow &amp; A3 Photo Essay; <code>W8</code> Forensic IFRS Ratio &amp; Working Capital Audit; <code>W9</code> 8-Capability Portfolio, A4 Essay &amp; Official AI-Use Declaration.</td></tr>
+          </tbody>
+        </table>
+
+        <div class="callout">
+          <div class="callout-title">One-Sentence Board-Level Final Recommendation (Unified Across Website, Deck, Report &amp; Video)</div>
+          <p style="margin:0;"><strong>NAC Kazatomprom JSC should selectively adapt Cameco Corporation's digital practices by deploying a ring-fenced, on-premise Enterprise RAG copilot for B2B utility ESG due diligence (cutting drafting from 15–20h to 3–5h) and piloting a 6-step Human-in-the-Loop (HITL) IoT predictive maintenance workflow across its ISR wellfields (cutting unplanned pump downtime from 12% to &lt;3%)—self-funded from surging FY2025 Operating Cash Flow (KZT 809,845m) and KZT 398,187m wellfield CAPEX—while strictly rejecting corporate privatization and autonomous contract pricing.</strong></p>
+        </div>
+
+        <h2>Three Headline Evidence Points</h2>
+        <ul>
+          <li><strong>1. Forensic Financial Capacity &amp; Working Capital Release (Week 8 &amp; A4 Audit):</strong> While unverified AI parsers misread Kazatomprom's headline net profit margin shift from 62.43% in FY2024 (KZT 1,132,115m / KZT 1,813,352m) to 44.74% in FY2025 (KZT 806,707m / KZT 1,803,049m) as a 1,769 bps collapse, human verification of IFRS Note 35 removed the one-time KZT 295,719m JV Budenovskoye 51% consolidation gain and KZT 15,692m Dioxitek reversal—proving Adjusted Net Profit remained stable at <strong>KZT 836,000m (46.10%) vs. KZT 807,000m (44.76%)</strong> while Operating Cash Flow surged <strong>+56.8% from KZT 516,487m (64.01% conversion) to KZT 809,845m (103.96% conversion)</strong> alongside negative Net Debt (<strong>-KZT 144,460m in FY24; -KZT 139,773m in FY25</strong>) and <strong>KZT 966,941m in FY24 (KZT 937,307m in FY25) Net Working Capital</strong> [3], [7], [10].</li>
+          <li><strong>2. Operations &amp; Supply Chain Bottleneck Removal (Weeks 4–5 &amp; A2):</strong> Redesigning the reactive 6-step weekly manual pump inspection workflow into a continuous 6-step IoT predictive maintenance pipeline with a mandatory <strong>Step 4 Chief Maintenance Engineer approval gate</strong> (&gt;=85% confidence threshold; SCADA fallback) cuts <strong>Unplanned Wellfield Pumping Downtime from 12% (MTBF = 450 hours) to &lt;3% (+35% MTBF)</strong> and reduces sulfuric acid usage by <strong>8%</strong>, while AI-supported order fulfillment cuts delivery cycle time from <strong>48 hours to &lt;12 hours</strong> across a logistics network routing <strong>48% of Western shipments via the Trans-Caspian TITR corridor</strong> [4], [6], [7].</li>
+          <li><strong>3. Governed B2B Commercial Speed &amp; 8-Capability Workforce Reskilling (Weeks 6–7 &amp; 9):</strong> Deploying the 7-stage air-gapped on-premise Enterprise RAG pipeline (with dual KAM + Legal Officer verification, &lt;85% confidence escalation to the Chief Legal Officer, and 15% quarterly blind audits by the Lead Compliance Officer, rejecting public cloud LLMs) cuts B2B Consideration-stage ESG turnaround by <strong>50–60% (15–20h → 3–5h)</strong>, while channeling the <strong>KZT 4.4 billion training budget (41h/employee)</strong> into 8 Human, Business, Digital, and Meta-Learning capabilities and Vision Zero safety leadership (returning LTIFR from <strong>0.14 below 0.09</strong>) [4], [7], [8], [9].</li>
+        </ul>
+      </div>
+    </section>
+    
+    <!-- SECTION 01 -->
+    <section class="tab-panel" id="panel-1">
+      <div class="panel-header">
+        <h1>Section 01 — Company Profiles &amp; Approved Comparison Logic</h1>
+        <button class="copy-btn" onclick="copyPanel(1)">Скопировать раздел для Google Sites</button>
+      </div>
+      <div class="panel-content" id="content-1">
+        <table>
+          <thead>
+            <tr>
+              <th style="width:20%;">Dimension</th>
+              <th style="width:38%;">Company A: Cameco Corporation (Comparator)</th>
+              <th style="width:42%;">Company B: NAC Kazatomprom JSC (Focal)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Headquarters &amp; Ownership</strong></td>
+              <td>Saskatoon, Saskatchewan, Canada. 100% publicly traded corporation (TSX: CCO / NYSE: CCJ) with dispersed institutional ownership [5].</td>
+              <td>Astana, Republic of Kazakhstan. Sovereign wealth fund <strong>Samruk-Kazyna JSC holds 62.99%</strong>; <strong>37.01% free float</strong> on AIX and LSE [3], [4], [9].</td>
+            </tr>
+            <tr>
+              <td><strong>Scale &amp; Financial Profile</strong></td>
+              <td>Tier-1 Western producer; tracks N. American reactor restarts &amp; SMR demand; active spot/term portfolio hedging [5].</td>
+              <td>World's #1 primary uranium producer (<strong>~23% global share</strong>); FY24 revenue KZT 1,813,352m; FY25 revenue KZT 1,803,049m; FY25 OCF KZT 809,845m; &gt;20,000 staff [3], [4], [7].</td>
+            </tr>
+            <tr>
+              <td><strong>Extraction Technology</strong></td>
+              <td>Mechanized underground hard-rock mining at Cigar Lake and McArthur River in Saskatchewan with automated robotics, plus 40% share in JV Inkai [5].</td>
+              <td><strong>100% Acidic In-Situ Recovery (ISR)</strong> across 26 deposits and 12 JVs (with CNNC, Cameco, Orano, Rosatom); C1 cash cost USD 18.06/lb in FY25 (guided USD 23.50–25.00/lb in FY26 as MET rose to 36% of C1) [4], [7].</td>
+            </tr>
+            <tr>
+              <td><strong>Value Chain Integration</strong></td>
+              <td>Vertically integrated from mining and UF<sub>6</sub> conversion to downstream reactor services via <strong>49% stake in Westinghouse Electric Company ($2.1B)</strong> [5].</td>
+              <td>Upstream U<sub>3</sub>O<sub>8</sub> extraction leader scaling domestic <strong>200 tU Ulba-FA</strong> LEU fuel assembly plant for Asian utilities and <strong>1.5M tonne in-house sulfuric acid capacity by 2028</strong> (SKZ-U, SSAP, Taiqonyr Qyshqyl Zauyty) [4], [7].</td>
+            </tr>
+            <tr>
+              <td><strong>Digital &amp; AI Footprint</strong></td>
+              <td>3D/4D geological modeling software, automated underground monitoring at Cigar Lake/McArthur River, and strict vendor cybersecurity rules [5], [6].</td>
+              <td><strong>SAP S/4HANA</strong>, corporate <strong>eKAP</strong> platform (33,434 near-misses logged in 2024; 34,629 in 2025), <strong>Siemens Oct 2024 sensor localization</strong>, and <strong>Semizbay-U Irkol robotization R&amp;D</strong> within KZT 398,187m wellfield CAPEX [4], [7], [8].</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+    
+    <!-- SECTION 02 -->
+    <section class="tab-panel" id="panel-2">
+      <div class="panel-header">
+        <h1>Section 02 — Progressive Weekly Evidence (Weeks 1 to 9)</h1>
+        <button class="copy-btn" onclick="copyPanel(2)">Скопировать раздел для Google Sites</button>
+      </div>
+      <div class="panel-content" id="content-2">
+        <p>Every weekly record below integrates the exact student artifacts uploaded for Weeks 1–9 using the mandatory <strong>seven-block structure</strong>.</p>
+
+        <h2>W1 — Business Context, External Environment Scan & AI Opportunity Matrix</h2>
+        <table>
+          <thead>
+            <tr>
+              <th style="width:23%;">Required Weekly Block</th>
+              <th style="width:77%;">Curated Evidence &amp; Analysis (W1)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>1. Theory Anchor</strong></td><td>OpenStax Ch. 1–2 (Business Environment & Economic Systems) [1]; Yeshenkulova et al. Ch. 1 (Kazakhstan Corporate Context) [2].</td></tr>
+            <tr><td><strong>2. Primary Artifact(s)</strong></td><td>1) Week 1 Practical Environment Scan (Temerbekova Tamilya AIB.docx: Technology/AI, Economic, Customer/Social, Legal/Political, Competitive [Orano KZ, Uranium One], Global + FY2025 KZT 1.803T Revenue Verification); 2) A1 Appendix Week 1 AI Opportunity Matrix (Demand & Price Forecasting + ISR Wellfield Extraction & Leaching).</td></tr>
+            <tr><td><strong>3. Company A vs. B Insight</strong></td><td>Kazatomprom produces ~23% of global primary uranium using 100% In-Situ Recovery (ISR) across 26 deposits (14 assets), achieving a structural C1 cash-cost advantage over Cameco's underground hard-rock mines (McArthur River, Cigar Lake) while competing domestically via JVs with Orano KZ and Uranium One [3], [4], [5]. However, Kazatomprom faces higher landlocked Eurasian transit exposure and chemical reagent dependence.</td></tr>
+            <tr><td><strong>4. Transfer Verdict</strong></td><td><strong>REJECT full replication of Cameco's high-capex underground mining model; ADAPT Cameco's long-term utility contracting and AI demand-forecasting discipline to Kazatomprom's ISR cost base.</strong></td></tr>
+            <tr><td><strong>5. Evidence + Verification</strong></td><td>FY2024 revenue KZT 1,813,352m (+26% YoY, realized price USD 69.48/lb); FY2025 revenue KZT 1,803,049m (1.803 trillion KZT, -1% YoY); >20,000 employees [3], [4], [7]. AI ISR optimization targets -10% operational downtime and -8% sulfuric acid reagent usage (A1 Appendix).</td></tr>
+            <tr><td><strong>6. Mini-Recommendation</strong></td><td>Commercial Director and Chief Operations Officer should deploy time-series AI demand forecasting for utility contracting while piloting IoT wellfield leaching optimization (-10% downtime, -8% acid per kgU).</td></tr>
+            <tr><td><strong>7. Learning Progression</strong></td><td>In Week 1, I initially assumed Kazatomprom's 23% global market share and low-cost ISR geology automatically insulated it from operational pressure. Later weeks revealed that sulfuric acid shortages, Mineral Extraction Tax (MET) increases (rising to 36% of C1 in FY25), and export corridor bottlenecks require active digital and supply-chain intervention.</td></tr>
+          </tbody>
+        </table>
+        
+        <h2>W2 — Stakeholder + AI-Ethics Map & Sovereign Dividend Tension</h2>
+        <table>
+          <thead>
+            <tr>
+              <th style="width:23%;">Required Weekly Block</th>
+              <th style="width:77%;">Curated Evidence &amp; Analysis (W2)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>1. Theory Anchor</strong></td><td>OpenStax Ch. 2 (Corporate Social Responsibility & Stakeholder Theory) [1]; Yeshenkulova et al. Ch. 2–3 [2].</td></tr>
+            <tr><td><strong>2. Primary Artifact(s)</strong></td><td>1) Week 2 Activity 3 Stakeholder + AI-Ethics Map (AIB2604 ACTIVITY3 TEMERBEKOVA TAMILYA.docx: Field Workers/Operators, Local Communities & Ecology, Technology Partners & Vendors, Company Leadership/Management for ISR Predictive Maintenance); 2) A1 Appendix Week 2 Stakeholder Matrix (Samruk-Kazyna, Minority Investors, Local Mining Communities, Utility Buyers, Ministries of Energy & Ecology).</td></tr>
+            <tr><td><strong>3. Company A vs. B Insight</strong></td><td>Cameco manages stakeholder relations through legally binding First Nations Collaboration Agreements in Northern Saskatchewan, human-centric site operator training, and strict vendor cybersecurity rules [5]. Kazatomprom balances majority state ownership (Samruk-Kazyna 62.99%) against LSE/AIX minority investors (37.01%), field operators who fear false AI alarms, and mono-city communities in Kyzylorda, Shiyeli, Sozak, and Turkestan who fear groundwater acid leaks [4], [9].</td></tr>
+            <tr><td><strong>4. Transfer Verdict</strong></td><td><strong>ADOPT Cameco's human-centric operator training, ESG monitoring, and structured tech governance; ADAPT Cameco's vendor cybersecurity standards to Kazakhstani national security laws and adapt First Nations agreements into binding 5-year socio-economic charters with district akimats.</strong></td></tr>
+            <tr><td><strong>5. Evidence + Verification</strong></td><td>Samruk-Kazyna stake verified at 62.99% in FY2024–2025 disclosures (correcting Week 1–3's ~75% approximation) [4], [9]; 75%+ FCF state dividend mandate modified at May 2025 AGM to deduct NCI cash flows (Ortalyk 49%, Budenovskoye 49%).</td></tr>
+            <tr><td><strong>6. Mini-Recommendation</strong></td><td>Managing Director for Strategy & ESG and Chief Engineer must pair HITL wellfield validation (protecting groundwater and field operators) with binding 5-year akimat charters targeting +15% local procurement and 85%+ community trust by 2028.</td></tr>
+            <tr><td><strong>7. Learning Progression</strong></td><td>Combining my Week 2 Activity 3 AI-Ethics Map with A1 feedback sharpened my stakeholder view: I corrected Samruk-Kazyna's stake from ~75% to 62.99% and realized that field operators, local communities, and technology vendors each face distinct ethical risks if ISR predictive maintenance operates without human sign-off.</td></tr>
+          </tbody>
+        </table>
+        
+        <h2>W3 — AI Business Model Stress Test, Ownership & Value Capture</h2>
+        <table>
+          <thead>
+            <tr>
+              <th style="width:23%;">Required Weekly Block</th>
+              <th style="width:77%;">Curated Evidence &amp; Analysis (W3)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>1. Theory Anchor</strong></td><td>OpenStax Ch. 5–6 (Forms of Business Ownership & Strategic Management) [1]; Yeshenkulova et al. Ch. 4 [2].</td></tr>
+            <tr><td><strong>2. Primary Artifact(s)</strong></td><td>1) Week 3 Practical Activity 3: AI Business Model Stress Test (Temerbekova_Week_3_Practical_Activities.pdf.pdf: 5 elements—Customer/need [ADAPT], Value proposition [PILOT], Delivery/process [ADOPT], Resources/activities [ADOPT], Revenue/value capture [PILOT] + Exit Ticket on Ownership, Entrepreneurship, Business Model, Transfer); 2) A1 Appendix Week 3 Stress Test (Westinghouse 49% M&A, First Nations Charters, Sensor Monitoring, 100% Privatization).</td></tr>
+            <tr><td><strong>3. Company A vs. B Insight</strong></td><td>Cameco tracks North American reactor restarts, uses 3D/4D geological software, automates monitoring at Cigar Lake/McArthur River, hedges spot/term exposure, and acquired 49% of Westinghouse ($2.1B) [5]. For Kazatomprom, acquiring Western downstream nuclear reactors creates severe capital and geopolitical strain under its 62.99% Samruk-Kazyna JSC governance structure; value capture instead relies on ISR digital twins, 3D layer mapping, and scaling the domestic 200 tU Ulba-FA fuel assembly plant for Asian utilities [4], [7].</td></tr>
+            <tr><td><strong>4. Transfer Verdict</strong></td><td><strong>ADOPT digital wellfield twins/predictive maintenance and 3D/4D geophysical drilling AI; ADAPT AI market-forecasting models to Asian/European contracts and scale domestic Ulba-FA instead of overseas M&A; PILOT AI automated ESG site certification and spot/term portfolio hedging; REJECT 100% privatization.</strong></td></tr>
+            <tr><td><strong>5. Evidence + Verification</strong></td><td>Cameco 49% Westinghouse stake and Cigar Lake/McArthur River automation [5]; Kazatomprom 200 tU Ulba-FA plant (with CGN/Framatome) and 26 ISR deposits across 12 JVs [4], [7].</td></tr>
+            <tr><td><strong>6. Mini-Recommendation</strong></td><td>Chief Strategy Officer and Chief Digital Officer should deploy AI geophysical layer mapping and predictive maintenance across active ISR sites while piloting AI spot/term contract optimization and scaling domestic Ulba-FA output.</td></tr>
+            <tr><td><strong>7. Learning Progression</strong></td><td>My Week 3 Exit Ticket highlighted the core trade-off of Kazatomprom's JSC ownership: Samruk-Kazyna's strategic control provides sovereign stability and access to international capital markets (AIX/LSE), but reduces M&A agility—making domestic Ulba-FA fuel fabrication and ISR digital twins far superior to copying Cameco's Westinghouse acquisition.</td></tr>
+          </tbody>
+        </table>
+        
+        <h2>W4 — Human–AI Task Allocation Matrix & Order Fulfillment Redesign</h2>
+        <table>
+          <thead>
+            <tr>
+              <th style="width:23%;">Required Weekly Block</th>
+              <th style="width:77%;">Curated Evidence &amp; Analysis (W4)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>1. Theory Anchor</strong></td><td>OpenStax Ch. 7–8 (Organizational Structure & Operations Management) [1]; Wilson & Daugherty (HBR, 2018), Davenport & Ronanki (HBR, 2018), Agrawal et al. (Prediction Machines, 2018), Brynjolfsson & McAfee (2014).</td></tr>
+            <tr><td><strong>2. Primary Artifact(s)</strong></td><td>1) Week 4 Practical Activity 3: Build Your Human–AI Task Allocation Matrix (Temerbekova_matrix.pdf: 5 tasks across Human Only / Human + AI / AI Executes + Human Review / Automated + Justification across Management, Org Design, Leadership, Business Impact, Risk & Judgment); 2) Assignment 2 Video Essay & Script (Temerbekova_AIB2604_A2_Script.pdf & VideoLINK.pdf: https://youtu.be/ksdVKvt7OXE).</td></tr>
+            <tr><td><strong>3. Company A vs. B Insight</strong></td><td>Following Agrawal et al. (2018), AI lowers the cost of prediction while increasing the value of human judgment. Across Kazatomprom's 5 core tasks: (1) Long-term supply contracts & TITR geopolitical risk are Human Only; (2) ISR production planning & leaching optimization are Human + AI; (3) ESG/radiation compliance reporting & uranium Order Fulfillment (cutting cycle time from 48h to <12h) are AI Executes + Human Review; (4) High-frequency SCADA/IoT telemetry ingestion is Automated; and (5) Mono-city community & government relations are Human Only.</td></tr>
+            <tr><td><strong>4. Transfer Verdict</strong></td><td><strong>ADAPT Cameco's automated operations into a strict 4-tier Human-AI allocation framework where AI executes high-frequency telemetry and route/order aggregation, but senior procurement and nuclear safety officers verify every dispatch.</strong></td></tr>
+            <tr><td><strong>5. Evidence + Verification</strong></td><td>Order Fulfillment Cycle Time baseline: 48 hours -> target: <12 hours via AI demand forecasting and route data collection (A2 Script). Escalation trigger: >5% route data discrepancy escalates to senior procurement officers; manual fallback to pre-approved inventory logs; 30-day pilot in 1 primary supply branch targeting -20% processing delays.</td></tr>
+            <tr><td><strong>6. Mini-Recommendation</strong></td><td>Head of Supply Chain and Chief Operations Officer should launch a 30-day pilot of AI-assisted order fulfillment in one supply branch (targeting 48h -> <12h cycle time and -20% delays) with mandatory human sign-off before shipment dispatch.</td></tr>
+            <tr><td><strong>7. Learning Progression</strong></td><td>Building the 5-task allocation matrix in Week 4 and recording my A2 Video Essay taught me that 'AI adoption' is meaningless without specifying who owns the process, what triggers human escalation (>5% route discrepancy), and what manual fallback keeps uranium moving if the algorithm fails.</td></tr>
+          </tbody>
+        </table>
+        
+        <h2>W5 — Current-to-Future Process Map: ISR Submersible Pump Predictive Maintenance</h2>
+        <table>
+          <thead>
+            <tr>
+              <th style="width:23%;">Required Weekly Block</th>
+              <th style="width:77%;">Curated Evidence &amp; Analysis (W5)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>1. Theory Anchor</strong></td><td>OpenStax Ch. 8 (Operations & Quality Management) [1]; IAEA-TECDOC-1239 (Acid ISR Uranium Recovery) [6]; Wilson & Daugherty (HBR, 2018).</td></tr>
+            <tr><td><strong>2. Primary Artifact(s)</strong></td><td>Week 5 Main Artifact: Current-State vs. Future-State Process Map — Predictive Maintenance and Pumping Equipment Failure Forecasting for ISR Wellfields (Week5_Artifact_Current_Future_Process_Map_Temerbekova.docx).</td></tr>
+            <tr><td><strong>3. Company A vs. B Insight</strong></td><td>In the current 6-step manual process, field technicians manually record submersible pump pressure, flow, and acid levels into weekly spreadsheets, creating a severe bottleneck: unpredicted pump failures occur between weekly reviews, driving Unplanned Wellfield Pumping Downtime to 12% (MTBF = 450 hours). In the redesigned 6-step future process: Step 1 (AI) streams real-time IoT vibration/pressure/acid data 24/7; Step 2 (AI) predicts pump failures 7–14 days ahead and checks >=85% confidence; Step 3 (AI) auto-generates preventive repair tickets; Step 4 (Human Only) enforces a mandatory review gate by the Chief Maintenance Engineer; Step 5 (Both) dispatches technicians and spare parts; and Step 6 (AI) retrains the ML model.</td></tr>
+            <tr><td><strong>4. Transfer Verdict</strong></td><td><strong>ADOPT Cameco's predictive maintenance concept from McArthur River/Cigar Lake, but ADAPT the predictive algorithms from underground mechanical mining to Kazatomprom's chemical/hydraulic ISR submersible pumps and sulfuric acid flow rates.</strong></td></tr>
+            <tr><td><strong>5. Evidence + Verification</strong></td><td>Current KPI baseline: 12% Unplanned Wellfield Pumping Downtime (MTBF = 450 hours) -> Future KPI target: <3% Unplanned Downtime (>75% reduction) and +35% MTBF improvement (W5 Artifact). Escalation: confidence <85% routes to Lead Reliability Specialist -> Operations Director & Chief Engineer. Fallback: weekly physical inspections and SCADA alarm rules.</td></tr>
+            <tr><td><strong>6. Mini-Recommendation</strong></td><td>Chief Maintenance Engineer and Operations Director should deploy the 6-step IoT predictive maintenance workflow across 2 JV wellfields in Q2, pairing the Step 4 human approval gate with co-pilot framing and KPI rewards for early fault prevention.</td></tr>
+            <tr><td><strong>7. Learning Progression</strong></td><td>Week 5 connected operations engineering with employee motivation: veteran field engineers initially fear predictive AI will deskill their craft or penalize overrides. Framing AI as a diagnostic co-pilot that removes tedious weekly spreadsheet logging while rewarding validated overrides resolves workforce resistance.</td></tr>
+          </tbody>
+        </table>
+        
+        <h2>W6 — B2B Nuclear Utility Customer Journey & Consideration-Stage RAG Copilot</h2>
+        <table>
+          <thead>
+            <tr>
+              <th style="width:23%;">Required Weekly Block</th>
+              <th style="width:77%;">Curated Evidence &amp; Analysis (W6)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>1. Theory Anchor</strong></td><td>OpenStax Ch. 11–12 (B2B Marketing & Customer Relationship Management) [1]; Davenport & Ronanki (HBR, 2018).</td></tr>
+            <tr><td><strong>2. Primary Artifact(s)</strong></td><td>Week 6 Main Artifact: B2B Customer Journey Map & Human-Only vs. AI-Supported (Enterprise RAG) Marketing Comparison Table (Week6_Artifact_Marketing_Comparison_Temerbekova_AIB2604.docx).</td></tr>
+            <tr><td><strong>3. Company A vs. B Insight</strong></td><td>Kazatomprom's B2B buyers are nuclear utility fuel procurement officers in Europe, North America, and Asia who progress through five stages: Awareness -> Consideration (Due Diligence) -> Purchase (Contracting) -> Experience (Delivery via TITR/St. Petersburg) -> Retention. The sharpest friction sits in Consideration: utility buyers demand exhaustive ESG, ISO 14001 radiation safety, and TITR route-resilience verification packages, which currently take Key Account Managers (KAMs) 15–20 hours of manual search and compilation across siloed PDFs, delaying responses by weeks.</td></tr>
+            <tr><td><strong>4. Transfer Verdict</strong></td><td><strong>ADAPT Cameco's digital stakeholder transparency by deploying a secure, ring-fenced on-premise Enterprise RAG assistant for Consideration-stage due diligence, while keeping contract pricing and negotiation 100% human-controlled.</strong></td></tr>
+            <tr><td><strong>5. Evidence + Verification</strong></td><td>Manual KAM drafting baseline: 15–20 hours per utility questionnaire -> AI-Supported RAG verification: 3–5 hours (70–80% reduction in initial drafting time; 50–60% net turnaround reduction) (W6 Artifact & A3 Photo Essay).</td></tr>
+            <tr><td><strong>6. Mini-Recommendation</strong></td><td>Commercial Director and Key Account Managers should deploy the on-premise Enterprise RAG assistant to auto-draft source-cited ESG and TITR compliance packages in 3–5 hours, requiring joint KAM and Legal Officer sign-off before client release.</td></tr>
+            <tr><td><strong>7. Learning Progression</strong></td><td>Week 6 shifted my understanding of marketing in state-owned extractive industries: Kazatomprom does not need consumer promotions; its decisive commercial advantage lies in eliminating B2B compliance and ESG verification friction during multi-year utility contract negotiations.</td></tr>
+          </tbody>
+        </table>
+        
+        <h2>W7 — 7-Stage AI/Data Governance Pipeline, Risk Register & Public vs. On-Premise RAG Architecture</h2>
+        <table>
+          <thead>
+            <tr>
+              <th style="width:23%;">Required Weekly Block</th>
+              <th style="width:77%;">Curated Evidence &amp; Analysis (W7)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>1. Theory Anchor</strong></td><td>OpenStax Ch. 16 (Management Information Systems & Data Security) [1]; KZ Law 'On Artificial Intelligence' (2025) & Subsoil Use Code (26 Dec 2025); NIST AI RMF 1.0 (2023).</td></tr>
+            <tr><td><strong>2. Primary Artifact(s)</strong></td><td>1) Week 7 Main Artifact: 7-Stage AI/Data Workflow & Governance Risk Register (Week7_Artifact_AI_Data_Workflow_Governance_Temerbekova_AIB2604.docx); 2) Assignment 3 Photo Essay (Temerbekova_AIB2604_BA2026_A3_PhotoEssay (2).pdf).</td></tr>
+            <tr><td><strong>3. Company A vs. B Insight</strong></td><td>Our 7-stage enterprise RAG workflow traces data through: (1) Data Source -> (2) Collection/Access (TLS 1.3, SAML 2.0 SSO, RBAC) -> (3) Processing/AI Analysis (air-gapped on-premise VPC Vector DB) -> (4) Human Verification (KAM + Legal Officer checking Source-Anchored Factuality, Zero-Hallucination, and Non-Disclosure of state reserve coordinates) -> (5) Business Decision (Commercial Director digital signature in DMS) -> (6) Customer Action -> (7) Monitoring (Data Governance Team). Comparing public cloud LLMs against our air-gapped on-premise eKAP RAG architecture proved why hard governance constraints are mandatory: public cloud models expose state uranium reserve coordinates and generate uncited ESG claims, whereas our on-premise VPC RAG enforces mandatory 2025 IAR page citations, locks drafts for dual KAM and Legal Officer verification, and blocks any output below 85% confidence.</td></tr>
+            <tr><td><strong>4. Transfer Verdict</strong></td><td><strong>PILOT algorithmic wellfield flow control (with >5% triple-sensor drift fallback) and deploy on-premise Enterprise RAG strictly behind an 85% similarity confidence gate, quarterly blind audits of 15% of packages by the Lead Compliance Officer, and daily CISO DLP monitoring.</strong></td></tr>
+            <tr><td><strong>5. Evidence + Verification</strong></td><td>Governance thresholds verified in Week 7 & A3: RAG similarity <85% or geopolitical sanction flags block release and escalate to the Chief Legal Officer (CLO); Lead Compliance Officer conducts quarterly blind audits of 15% of client packages; CISO runs daily DLP reports; ISR sensor drift >5% reverts to conservative SCADA baseline.</td></tr>
+            <tr><td><strong>6. Mini-Recommendation</strong></td><td>Chief Legal Officer, Lead Compliance Officer, and CISO must enforce the 7-stage RAG governance protocol—blocking any output with <85% confidence, auditing 15% of packages quarterly, and maintaining air-gapped on-premise VPC storage.</td></tr>
+            <tr><td><strong>7. Learning Progression</strong></td><td>Designing the 7-stage governance pipeline in Week 7 and curating the A3 Photo Essay proved that technical fluency without air-gapped VPC isolation, mandatory source citations, and quantitative fallback gates (<85% RAG confidence and >5% sensor drift) is a severe liability in a state nuclear enterprise.</td></tr>
+          </tbody>
+        </table>
+        
+        <h2>W8 — Forensic Financial Verification, Working Capital Anatomy & AI Discrepancy Audit</h2>
+        <table>
+          <thead>
+            <tr>
+              <th style="width:23%;">Required Weekly Block</th>
+              <th style="width:77%;">Curated Evidence &amp; Analysis (W8)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>1. Theory Anchor</strong></td><td>OpenStax Ch. 14 & 17 (Financial Statements, Ratio Analysis & Financial Management) [1]; IFRS 10 Consolidation & IAS 7 Cash Flow Standards [3], [7].</td></tr>
+            <tr><td><strong>2. Primary Artifact(s)</strong></td><td>Week 8 Main Artifact: Financial Verification, Balance Sheet Anatomy & AI Discrepancy Audit (Week_8_Artifact_Temerbekova.docx & BA2026_A4_AI_Use_Declaration (1).pdf).</td></tr>
+            <tr><td><strong>3. Company A vs. B Insight</strong></td><td>Generic AI financial parsers claimed Kazatomprom suffered a catastrophic 1,769 bps operational margin collapse from 62.43% in FY2024 (KZT 1,132,115m / KZT 1,813,352m) to 44.74% in FY2025 (KZT 806,707m / KZT 1,803,049m). Forensic inspection of IFRS Note 35 proved FY2024 net profit was inflated by a one-time non-cash gain of KZT 295,719m from consolidating 51% of JV Budenovskoye LLP plus a KZT 15,692m Dioxitek provision reversal (Other Income was KZT 402,700m in FY24 vs. KZT 17,455m in FY25). Removing one-offs reveals rock-solid Adjusted Net Profit (KZT 836,000m [46.10%] in FY24 vs. KZT 807,000m [44.76%] in FY25; Owners Adjusted KZT 576,544m vs. KZT 570,460m), rising Adjusted EBITDA (KZT 1,096,711m -> KZT 1,133,489m, +3% YoY), and a +56.8% surge in Operating Cash Flow from KZT 516,487m (64.01% conversion) to KZT 809,845m (103.96% conversion).</td></tr>
+            <tr><td><strong>4. Transfer Verdict</strong></td><td><strong>ADOPT mandatory human IFRS footnote reconciliation for all non-operating JV gains and NCI Free Cash Flow deductions; deploy SAP S/4HANA AI exception auditing to unlock trapped working capital.</strong></td></tr>
+            <tr><td><strong>5. Evidence + Verification</strong></td><td>Balance Sheet (31 Dec 2024): Total Assets KZT 3,821,881m (+47.0% YoY from 2,599,292m); Total Liabilities KZT 824,330m (Current 420,985m + Non-Current 403,345m); Equity KZT 2,997,551m; Total Liab/Equity = 27.50% (0.275x); ROE = 37.77% unadj. / 27.89% adj. Financial Debt: KZT 149,953m in FY24 (5.00% Fin D/E; KZT 674,377m or 81.8% of liabilities are non-debt provisions/payables) and KZT 207,653m in FY25. Cash: KZT 294,413m (FY24) and KZT 347,426m (FY25). Net Debt: -KZT 144,460m (-0.13x Net Debt/EBITDA in FY24) and -KZT 139,773m (-0.12x in FY25). Current Ratio = 3.86x; Operating WC Ratio = 3.65x in FY24 (1,332,126 / 365,185) and 4.19x in FY25 (1,231,142 / 293,835); Net Working Capital = KZT 966,941m (FY24) and KZT 937,307m (FY25), including U3O8 inventories of KZT 388,157m (6,334 tU in FY24) / KZT 415,319m (6,636 tU in FY25) and Recoverable VAT of KZT 219,672m (FY24) / KZT 274,180m (FY25).</td></tr>
+            <tr><td><strong>6. Mini-Recommendation</strong></td><td>Chief Financial Officer should self-fund the entire Year-1 AI roadmap from surging FY2025 Operating Cash Flow (KZT 809,845m) with zero new debt, while deploying SAP S/4HANA AI auditing to accelerate recovery of the KZT 274,180m VAT balance and optimize the 6,636 tU inventory buffer.</td></tr>
+            <tr><td><strong>7. Learning Progression</strong></td><td>Week 8 was the intellectual anchor of my portfolio: catching the AI's 1,769 bps margin error, its confusion of KZT 824,330m total liabilities with KZT 149,953m financial debt, and its blindness to the KZT 966,941m working-capital lock-up proved why forensic human financial judgment is irreplaceable.</td></tr>
+          </tbody>
+        </table>
+        
+        <h2>W9 — Future of Work, 8-Capability Portfolio & Samruk-Kazyna AI Alignment</h2>
+        <table>
+          <thead>
+            <tr>
+              <th style="width:23%;">Required Weekly Block</th>
+              <th style="width:77%;">Curated Evidence &amp; Analysis (W9)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>1. Theory Anchor</strong></td><td>OpenStax Ch. 8 & 10 (Human Resource Management & Workforce Development) [1]; Yeshenkulova et al. [2]; Samruk-Kazyna AI Strategy [9].</td></tr>
+            <tr><td><strong>2. Primary Artifact(s)</strong></td><td>1) Week 9 Main Artifact: 8-Capability Career Portfolio across Human, Business, Digital & Meta-Learning Domains (Week_9_Artifact_Temerbekova.docx); 2) Assignment 4 Argumentative Essay & Official AI-Use Declaration (BA2026_A4_Essay (1) (1).pdf & BA2026_A4_AI_Use_Declaration (1).pdf).</td></tr>
+            <tr><td><strong>3. Company A vs. B Insight</strong></td><td>Samruk-Kazyna has launched 62 AI projects, trained 236,000 Group employees, and set a target for 70% of management decisions to involve AI within two years [9]. However, '70% AI involvement' is not autonomous AI authority: eKAP logged 33,434 near-misses in 2024 and 34,629 in 2025, yet LTIFR rose from 0.09 to 0.14 with 2 fatalities (5 accidents), proving digital reporting cannot replace physical Vision Zero STOP-work leadership. Furthermore, managing 12 JVs (including the March 2026 transfer of the 1,500 tU Akdala deposit from JV SMCC LLP to trust management and the 26 Dec 2025 Subsoil Use Code >=90% ownership/tech-transfer rules) and rising MET taxes (30% [KZT 91,487m] to 36% [KZT 137,186m] of C1, lifting FY25 C1 to USD 18.06/lb and FY26 guidance to USD 23.50–25.00/lb) demands eight integrated human, business, digital, and meta-learning capabilities.</td></tr>
+            <tr><td><strong>4. Transfer Verdict</strong></td><td><strong>ADAPT workforce development by channeling Kazatomprom's KZT 4.4 billion annual training budget (41 hours/employee across >20,000 workers via High Technology Institute LLP, Murager & Izbasar programs) into the 8 capabilities of an AI-Augmented Operations & Strategy Manager.</strong></td></tr>
+            <tr><td><strong>5. Evidence + Verification</strong></td><td>8 Capabilities verified against FY2024–2025 IAR: (H1) Safety ethical judgment (34,629 near-misses, LTIFR 0.14); (H2) Cross-cultural JV diplomacy (12 JVs, Akdala 1,500 tU transfer, >=90% SUA rule); (B3) IFRS/NCI FCF & MET modeling (36% MET, C1 $18.06 -> $23.50–25.00/lb); (B4) TITR (48% West exports) & 1.5M t acid capacity (SKZ-U, SSAP, Taiqonyr Qyshqyl Zauyty); (D5) SAP S/4HANA & eKAP auditing (KZT 274,180m VAT); (D6) ISR telemetry & Siemens/Irkol robotics in KZT 398,187m wellfield CAPEX; (M7) Epistemic vigilance across Samruk-Kazyna's 62 AI projects; (M8) Interdisciplinary nuclear reskilling (KZT 4.4B budget, 200 tU Ulba-FA).</td></tr>
+            <tr><td><strong>6. Mini-Recommendation</strong></td><td>HR Director and HSE Director should align the KZT 4.4B training budget (41h/employee) with these 8 capabilities, tying supervisor bonuses to bringing LTIFR back below 0.09 with zero fatalities while producing concrete 6–12 month proof artifacts.</td></tr>
+            <tr><td><strong>7. Learning Progression</strong></td><td>Completing Week 9 and Assignment 4 brought my entire trimester full circle: AI devalues routine clerical summarization, but dramatically increases the career value of business graduates who combine digital telemetry and ERP fluency with forensic IFRS auditing, sovereign JV diplomacy, and safety-critical human ethics.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+    
+    <!-- SECTION 03 -->
+    <section class="tab-panel" id="panel-3">
+      <div class="panel-header">
+        <h1>Section 03 — Attestation Syntheses (A1 to A4 Development Trail)</h1>
+        <button class="copy-btn" onclick="copyPanel(3)">Скопировать раздел для Google Sites</button>
+      </div>
+      <div class="panel-content" id="content-3">
+        <table>
+          <thead>
+            <tr>
+              <th style="width:20%;">Assignment &amp; Uploaded Files</th>
+              <th style="width:26%;">1. What Was Strongest?</th>
+              <th style="width:27%;">2. What Changed After Feedback / Later Evidence?</th>
+              <th style="width:27%;">3. What Was Reused, Revised, or Rejected for Capstone?</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>A1 Business Report & Appendix (Weeks 1–3 · Submitted 24.09.2026)</strong><br><br><em>Files:</em> Temerbekova_AIB2604_BA2026_A1_BusinessReport.pdf.pdf + TEMERBEKOVA_AIB-2604_BA2026_A1_Appendix.pdf/.docx + W1–W3 Practical Artifacts.<br><br><em>Feeds:</em> Capstone Deck Slides 2–4 + Master Portfolio Sections 01–03.</td>
+              <td>Established the foundational geological, governance, and value-chain contrast between Cameco's underground hard-rock mines + 49% Westinghouse vertical integration and Kazatomprom's 100% ISR extraction + 200 tU Ulba-FA Asian fuel assembly partnership, supported by the W1 AI Opportunity Matrix, W2 Stakeholder-Ethics Map, and W3 Business Model Stress Test.</td>
+              <td>Later Week 8 IFRS verification refined A1's approximate '~75% state equity' figure to the exact audited 62.99% Samruk-Kazyna stake (37.01% LSE/AIX public float) and deepened general Digital Mine descriptions with concrete C1 cash cost pressures (USD 18.06/lb in FY25 after MET rose to 36% of C1, guided to USD 23.50–25.00/lb in FY26).</td>
+              <td>REUSED the core transfer verdicts (ADOPT digital wellfield twins & 3D geological mapping; ADAPT 5-year akimat charters & Asian/EU demand forecasting; PILOT automated ESG certification & spot/term hedging; DELAY overseas reactor M&A in favor of Ulba-FA; REJECT 100% privatization) and the -10% downtime / -8% acid usage targets in Capstone Slides 2–4.</td>
+            </tr>
+            <tr>
+              <td><strong>A2 Video Essay & Script (Weeks 4–5 · YouTube Link + Script Submitted)</strong><br><br><em>Files:</em> Temerbekova_AIB2604_A2_VideoLINK.pdf (https://youtu.be/ksdVKvt7OXE) + Temerbekova_AIB2604_A2_Script.pdf + Temerbekova_matrix.pdf + Week5_Artifact_Current_Future_Process_Map_Temerbekova.docx.<br><br><em>Feeds:</em> Capstone Deck Slides 5–7 & 14 + Final Video Presentation delivery structure.</td>
+              <td>Synthesized Brynjolfsson & McAfee (2014), Wilson & Daugherty (HBR, 2018), Agrawal et al. (2018), and Davenport & Ronanki (HBR, 2018) into two concrete operational redesigns: (1) cutting uranium Order Fulfillment Cycle Time from 48 hours to <12 hours (A2 Script), and (2) redesigning the 6-step ISR Submersible Pump Predictive Maintenance workflow to cut unplanned downtime from 12% (MTBF = 450h) to <3% (+35% MTBF) with a mandatory Chief Maintenance Engineer gate at Step 4 (W5 Artifact).</td>
+              <td>Integrating the Week 4 5-task allocation matrix with the Week 5 6-step process map allowed us to specify exact quantitative escalation triggers (<85% ML confidence score on pump failure forecasts escalates to Lead Reliability Specialist -> Operations Director; >5% route discrepancy escalates to senior procurement officers) and manual SCADA/inventory fallbacks.</td>
+              <td>SURVIVED & REUSED: The 5-task Human–AI allocation matrix (Slide 5), the 6-step ISR predictive maintenance workflow (Slide 6), the operator motivation & Vision Zero change-management plan (Slide 7), and the 48h -> <12h order fulfillment KPI (Slides 5 & 14).</td>
+            </tr>
+            <tr>
+              <td><strong>A3 Photo Essay & W6–W7 Governance Package (Weeks 6–7 · Submitted 18.10.2026)</strong><br><br><em>Files:</em> Temerbekova_AIB2604_BA2026_A3_PhotoEssay (2).pdf + Week6_Artifact_Marketing_Comparison_Temerbekova_AIB2604.docx + Week7_Artifact_AI_Data_Workflow_Governance_Temerbekova_AIB2604.docx.<br><br><em>Feeds:</em> Capstone Deck Slides 8–11 + Master Portfolio Sections 02, 05 & 06.</td>
+              <td>Quantified B2B utility Consideration-stage friction (15–20 hours of manual KAM ESG/TITR questionnaire drafting vs. 3–5 hours with on-premise Enterprise RAG, cutting turnaround by 50–60%), mapped the 7-stage data governance pipeline (TLS 1.3, SAML SSO, air-gapped VPC Vector DB, dual KAM+Legal verification, Commercial Director digital signature, <85% CLO escalation, 15% quarterly blind audit by Lead Compliance Officer), and contrasted public cloud LLM data-leakage risks against an air-gapped on-premise eKAP RAG architecture and triple-modular ISR sensor redundancy (>5% drift fallback).</td>
+              <td>Combining the W6 Marketing Comparison and W7 Governance Workflow with the A3 Photo Essay elevated our risk register from conceptual principles to hard operational rules: blocking any RAG output below 85% similarity, auditing 15% of packages quarterly, and enforcing a >5% triple-sensor drift fallback on ISR wellfields.</td>
+              <td>REUSED the B2B Consideration-stage value proposition (Slide 8), the 7-stage RAG governance pipeline (Slide 9), the Public Cloud AI vs. On-Premise eKAP RAG comparison (Slide 10), and the Defense-in-Depth Risk Register (Slide 11).</td>
+            </tr>
+            <tr>
+              <td><strong>A4 Argumentative Essay & Official AI-Use Declaration (Weeks 8–9 · Submitted 31.10.2026)</strong><br><br><em>Files:</em> BA2026_A4_Essay (1) (1).pdf + BA2026_A4_AI_Use_Declaration (1).pdf + Week_8_Artifact_Temerbekova.docx + Week_9_Artifact_Temerbekova.docx.<br><br><em>Feeds:</em> Capstone Deck Slides 12–16 + Standalone Official Capstone AI-Use Declaration.</td>
+              <td>Exposed AI's false 1,769 bps margin-collapse claim via IFRS Note 35 verification (removing the one-time KZT 295,719m JV Budenovskoye consolidation gain + KZT 15,692m Dioxitek reversal to prove Adjusted Net Profit held steady at KZT 836,000m [46.10%] vs. KZT 807,000m [44.76%] while Operating Cash Flow surged +56.8% from KZT 516,487m to KZT 809,845m [103.96% conversion]), decomposed the KZT 966,941m net working capital lock-up (KZT 415,319m inventory [6,636 tU] + KZT 274,180m VAT in FY25), and built the 8-capability Future of Work portfolio.</td>
+              <td>Completing the official AITU AI-Use Declaration (Sections A–H) and Week 9 8-Capability Artifact linked Kazatomprom's financial fortress (-KZT 144,460m / -KZT 139,773m net debt; 5.00% Financial D/E) directly to our 12-month self-funded AI rollout and KZT 4.4B workforce reskilling plan (addressing the rise in LTIFR from 0.09 to 0.14 alongside 34,629 eKAP near-misses).</td>
+              <td>REUSED the complete IFRS reconciliation chart and balance sheet table (Slides 12–13), the self-funded 12-month implementation roadmap (Slide 14), the 8-capability career table (Slide 15), and the official AITU AI-Use Declaration structure.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+    
+    <!-- SECTION 04 -->
+    <section class="tab-panel" id="panel-4">
+      <div class="panel-header">
+        <h1>Section 04 — Final Capstone (Executive Summary Report, 12-Month Roadmap &amp; Video Script)</h1>
+        <button class="copy-btn" onclick="copyPanel(4)">Скопировать раздел для Google Sites</button>
+      </div>
+      <div class="panel-content" id="content-4">
+        <h2>4.1 Executive Summary Report (Decision-Ready Synthesis)</h2>
+        <p><strong>1. Strategic Problem &amp; Baseline Bottlenecks:</strong> JSC National Atomic Company "Kazatomprom" leads global primary uranium supply (~23% world share across 26 deposits and 12 JVs), generating <strong>KZT 1,813,352 million revenue in FY2024 (+26% YoY)</strong> and <strong>KZT 1,803,049 million in FY2025 (-1% YoY)</strong> [3], [7]. Yet our progressive audit across Weeks 1–9 uncovered three structural bottlenecks that erode operational agility and lock up cash: (a) in upstream extraction, reactive weekly manual spreadsheet checks leave submersible wellfield pumps vulnerable to unpredicted breakdowns, resulting in <strong>12% Unplanned Pumping Downtime (MTBF = 450 hours)</strong> while Mineral Extraction Tax (MET) rose from 30% (KZT 91,487m) to 36% (KZT 137,186m) of C1 cash cost, pushing C1 to <strong>USD 18.06/lb in FY2025 (guided to USD 23.50–25.00/lb in FY2026)</strong> (W5, W8, W9); (b) in B2B utility marketing, international nuclear buyers in the Consideration stage demand exhaustive ESG, radiation safety, and Trans-Caspian (TITR) route-resilience verification packages that take Key Account Managers (KAMs) <strong>15–20 hours of manual compilation</strong> across siloed PDFs, while uranium order fulfillment averages <strong>48 hours</strong> (A2, W6); and (c) on the balance sheet, <strong>KZT 966,941 million in FY2024 (and KZT 937,307 million in FY2025)</strong> is tied up in Net Working Capital—driven by <strong>KZT 415,319 million in U<sub>3</sub>O<sub>8</sub> inventory buffers (6,636 tU)</strong> for the TITR corridor (48% of Western shipments) and <strong>KZT 274,180 million in recoverable VAT</strong> (W8, W9).</p>
+
+        <p><strong>2. Comparative Benchmarking &amp; Selective Transfer Verdicts (Cameco vs. Kazatomprom):</strong> Benchmarking Canadian comparator Cameco Corporation (Company A) shows that while automated monitoring at Cigar Lake/McArthur River, 3D/4D geological software, and balanced spot/term contracting drive value, blind imitation would fail under Kazatomprom's 62.99% Samruk-Kazyna state ownership, 75%+ FCF dividend mandate (modified at the May 2025 AGM to deduct 49% NCI cash flows at Ortalyk and Budenovskoye), and 26 Dec 2025 Subsoil Use Code amendments (requiring &gt;=90% KAP ownership or conversion/enrichment technology transfer). Accordingly, we <strong>ADOPT</strong> digital wellfield twins, 6-step IoT predictive maintenance, human-centric operator training, and 3D/4D geophysical drilling AI; <strong>ADAPT</strong> demand forecasting to Asian/EU term contracts, tailor vendor cybersecurity to Kazakhstani critical infrastructure law, adapt First Nations charters into 5-year district akimat agreements, and scale domestic <strong>200 tU Ulba-FA</strong> fuel fabrication and <strong>1.5M tonne sulfuric acid plants</strong> instead of copying Cameco's $2.1B (49%) Westinghouse M&amp;A; <strong>PILOT</strong> AI-monitored ESG certification and spot/term hedging; and <strong>REJECT</strong> 100% privatization and autonomous pricing (W2, W3, A1).</p>
+
+        <p><strong>3. Governed AI Architecture &amp; Forensic Financial Proof:</strong> Rejecting public cloud LLMs, our 7-stage B2B RAG workflow enforces air-gapped VPC storage, dual KAM + Legal Officer verification, &lt;85% CLO escalation, and 15% quarterly blind audits, while our 6-step ISR pump workflow enforces Step 4 Chief Maintenance Engineer sign-off and &gt;5% drift SCADA fallbacks. Audited Note 35 verification proves FY24 Reported Net Profit (KZT 1,132,115m) held KZT 295,719m in Budenovskoye paper gains, whereas FY25 Operating Cash Flow surged <strong>+56.8% to KZT 809,845m (103.96% conversion)</strong> with negative Net Debt (<strong>-KZT 139,773m</strong>), self-funding our entire 12-month roadmap.</p>
+
+        <h2>4.2 Complete 12-Month Phased Implementation Roadmap</h2>
+        <table>
+          <thead>
+            <tr>
+              <th style="width:12%;">Phase &amp; Horizon</th>
+              <th style="width:18%;">Priority Action</th>
+              <th style="width:14%;">Role Owner &amp; Gate</th>
+              <th style="width:16%;">KPI Baseline → Target</th>
+              <th style="width:14%;">Funding Anchor</th>
+              <th style="width:14%;">Risk &amp; Control</th>
+              <th style="width:12%;">Decision Gate</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Q1 (Months 1–3)</strong><br>RAG Governance Pilot</td>
+              <td><strong>Deploy</strong> air-gapped on-premise VPC Enterprise RAG for B2B utility ESG &amp; TITR due diligence.</td>
+              <td>Commercial Dir., CLO, Compliance &amp; CISO</td>
+              <td>KAM drafting: <strong>15–20h → 3–5h</strong> (-50–60% turnaround); <strong>0 hallucinations</strong>.</td>
+              <td>Corporate IT OPEX (backed by -KZT 139,773m net cash position).</td>
+              <td><em>Risk:</em> Hallucination or leak.<br><em>Control:</em> &lt;85% CLO escalation + 15% blind audit + daily DLP.</td>
+              <td><strong>M3 Gate:</strong> 100% citation accuracy in 15% blind audit &amp; 0 DLP leaks.</td>
+            </tr>
+            <tr>
+              <td><strong>Q2 (Months 4–6)</strong><br>ISR Telemetry Pilot</td>
+              <td><strong>Launch</strong> 6-step IoT submersible pump predictive maintenance at 2 JV wellfields.</td>
+              <td>Chief Maintenance Engineer, Lead Reliability Spec. &amp; Ops Dir.</td>
+              <td>Unplanned pump downtime: <strong>12% → &lt;3%</strong>; MTBF <strong>450h → +35%</strong>.</td>
+              <td>Allocated within <strong>KZT 398,187m</strong> wellfield CAPEX &amp; Siemens localization.</td>
+              <td><em>Risk:</em> Sensor drift / false alarm.<br><em>Control:</em> Step 4 Engineer sign-off + &gt;5% drift SCADA fallback.</td>
+              <td><strong>M6 Gate:</strong> Forecast confidence &gt;=85% &amp; 0 aquifer excursions.</td>
+            </tr>
+            <tr>
+              <td><strong>Q3 (Months 7–9)</strong><br>SAP Working Capital AI</td>
+              <td><strong>Implement</strong> AI route-forecasting &amp; automated VAT/NCI FCF auditing in SAP S/4HANA.</td>
+              <td>CFO, Senior Procurement Officers &amp; Big Four Auditors</td>
+              <td>Order cycle: <strong>48h → &lt;12h</strong> (-20% delays); accelerate <strong>KZT 274,180m VAT</strong> recovery.</td>
+              <td>Self-funded from <strong>KZT 809,845m</strong> FY25 Operating Cash Flow.</td>
+              <td><em>Risk:</em> Route drift or IFRS error.<br><em>Control:</em> &gt;5% route drift escalation + Note 35 manual audit.</td>
+              <td><strong>M9 Gate:</strong> 0 IFRS/NCI discrepancies &amp; verified WC release.</td>
+            </tr>
+            <tr>
+              <td><strong>Q4 (Months 10–12)</strong><br>JV Scale &amp; Upskilling</td>
+              <td><strong>Scale</strong> ISR digital twins across 12 JVs; train staff in 8 capabilities via High Tech Institute.</td>
+              <td>COO, HR Director &amp; HSE Director (Vision Zero STOP rules)</td>
+              <td>Acid usage: <strong>-8%/kgU</strong>; workplace LTIFR: <strong>0.14 → &lt;0.09 (0 fatalities)</strong>.</td>
+              <td><strong>KZT 4.4B annual training budget</strong> (41 hours/employee across &gt;20,000 staff).</td>
+              <td><em>Risk:</em> Operator deskilling/safety.<br><em>Control:</em> Physical STOP cards override AI speed + co-pilot KPIs.</td>
+              <td><strong>M12 Gate:</strong> C1 cost within guidance &amp; 85%+ community trust.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2>4.3 Complete 10–15 Minute Capstone Video Presentation Script (Aligned to the 18-Slide Deck)</h2>
+        <table>
+          <thead>
+            <tr>
+              <th style="width:16%;">Slides &amp; Timing</th>
+              <th style="width:84%;">Verbatim Presenter Script (Temerbekova Tamilya, ID: 260060, AIB-2604)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Slides 1–3</strong><br>0:00 – 2:15<br><em>Thesis &amp; Benchmark</em></td>
+              <td>"Hello, my name is Tamilya Temerbekova, Student ID 260060, Group AIB-2604. Welcome to my BA2026 Capstone presentation on AI-Enabled Business Transformation at JSC National Atomic Company Kazatomprom, benchmarked against Canadian uranium producer Cameco Corporation. As shown on Slide 2, Kazatomprom is the world's number-one primary uranium producer with a 23 percent global share and KZT 1.803 trillion in FY2025 revenue, while operating cash flow surged 56.8 percent to KZT 809,845 million. However, three structural bottlenecks constrain value creation: 12 percent unplanned submersible pump downtime in our In-Situ Recovery wellfields, 15 to 20 hour manual turnaround delays on B2B utility ESG questionnaires, and KZT 966,941 million locked in net working capital. On Slide 3, comparing Kazatomprom with Cameco proves why we cannot blindly copy Cameco's 100 percent private governance or its 49 percent Westinghouse acquisition: Kazatomprom is 62.99 percent state-owned via Samruk-Kazyna, mines 100 percent via ISR at an 18.06 dollar per pound C1 cost, and routes 48 percent of Western exports through the Trans-Caspian corridor."</td>
+            </tr>
+            <tr>
+              <td><strong>Slides 4–7</strong><br>2:15 – 5:15<br><em>Stress Test, Allocation, Process Map &amp; Leadership</em></td>
+              <td>"On Slide 4, synthesizing my Week 2 Stakeholder-Ethics Map and Week 3 Business Model Stress Test, we adopt Cameco's digital wellfield twins and 3D geological mapping, adapt demand forecasting and vendor cybersecurity to Kazakhstani law, and pilot automated ESG certification while scaling our domestic 200-tonne Ulba-FA fuel assembly plant. Slide 5 presents my Week 4 Human-AI Task Allocation Matrix and Assignment 2 findings: high-frequency SCADA telemetry is automated, ESG compliance and uranium order fulfillment—cutting cycle time from 48 hours to under 12 hours—use AI execution with mandatory human review, ISR wellfield optimization pairs hydrogeologists with AI, and sovereign TITR contracts and mono-city akimat relations remain strictly human. On Slide 6, my Week 5 Current-to-Future Process Map replaces reactive weekly manual pump logs—which suffer 12 percent unplanned downtime and a 450-hour MTBF—with a 6-step IoT predictive workflow featuring a mandatory Chief Maintenance Engineer approval gate at Step 4, cutting unplanned downtime below 3 percent and boosting MTBF by 35 percent. Slide 7 addresses leadership and safety culture: because eKAP logged 34,629 near-misses in 2025 while LTIFR rose from 0.09 to 0.14 with two fatalities, managers must pair our KZT 4.4 billion training budget—41 hours per employee—with co-pilot framing and physical Vision Zero STOP-work authority."</td>
+            </tr>
+            <tr>
+              <td><strong>Slides 8–11</strong><br>5:15 – 8:30<br><em>B2B Journey, 7-Stage RAG, Cloud vs. On-Premise &amp; Risk Controls</em></td>
+              <td>"Moving to commercial and data governance on Slide 8: in Week 6, I identified severe friction in the B2B Consideration stage, where Key Account Managers spend 15 to 20 hours manually compiling utility ESG and TITR resilience questionnaires. Deploying an on-premise Enterprise RAG copilot cuts drafting to 3 to 5 hours—a 50 to 60 percent turnaround improvement. Slide 9 shows the 7-stage Week 7 governance pipeline that makes this safe: documents are ingested over TLS 1.3 into an air-gapped on-premise Vector DB, verified jointly by the KAM and Legal Officer at Stage 4, and signed digitally by the Commercial Director at Stage 5, while any output below 85 percent confidence escalates to the Chief Legal Officer. Slide 10 contrasts Public Cloud AI against our On-Premise eKAP RAG architecture: public cloud models risk leaking state uranium reserve coordinates and generating uncited ESG claims, whereas our ring-fenced corporate VPC enforces TLS 1.3 encryption, mandatory 2025 IAR page citations, dual human review, and an 85 percent confidence gate. Slide 11 locks in defense-in-depth controls: 15 percent quarterly blind audits by the Lead Compliance Officer, daily CISO DLP checks, and a 5 percent sensor-drift SCADA fallback."</td>
+            </tr>
+            <tr>
+              <td><strong>Slides 12–18</strong><br>8:30 – 12:30<br><em>Forensic Finance, Roadmap, 8 Capabilities &amp; Reflection</em></td>
+              <td>"Slides 12 and 13 present my Week 8 and Assignment 4 forensic financial audit. Unverified AI summaries claimed Kazatomprom suffered a 1,769 basis-point margin collapse in 2025. By auditing IFRS Note 35, I proved that FY2024's KZT 1,132,115 million reported net profit was inflated by a one-time KZT 295,719 million non-cash consolidation gain on JV Budenovskoye. Removing one-offs reveals rock-solid Adjusted Net Profit of KZT 836,000 million versus KZT 807,000 million and a 56.8 percent surge in Operating Cash Flow to KZT 809,845 million—representing 103.96 percent cash conversion. Moreover, separating KZT 674,377 million of non-debt provisions and payables from total liabilities proves financial debt is just 5.00 percent of equity with negative net debt of minus KZT 139,773 million, while KZT 966,941 million in FY24 net working capital holds 6,636 tonnes of strategic inventory and KZT 274,180 million in recoverable VAT. On Slide 14, this cash fortress self-funds our 12-month phased rollout across Q1 to Q4 without a single tenge of new debt. Slide 15 maps my eight Week 9 capabilities across Human, Business, Digital, and Meta-Learning domains to concrete 6-to-12-month proof artifacts, Slide 16 reflects on how my judgment evolved across Weeks 1 to 10, and Slide 17 presents our IEEE reference register. Thank you—I welcome your questions."</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div style="position:relative; width:100%; aspect-ratio:16/9;">
+    <iframe
+        src="https://www.youtube.com/embed/QWW_hCwWrEo"
+        title="YouTube Video"
+        style="width:100%; height:100%; border:0;"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen>
+    </iframe>
+</div>
+
+      </div>
+    </section>
+    
+    <!-- SECTION 05 -->
+    <section class="tab-panel" id="panel-5">
+      <div class="panel-header">
+        <h1>Section 05 — Evidence + Verification (Forensic Audit Table &amp; IEEE Bibliography)</h1>
+        <button class="copy-btn" onclick="copyPanel(5)">Скопировать раздел для Google Sites</button>
+      </div>
+      <div class="panel-content" id="content-5">
+        <h2>5.1 Complete Week 8 &amp; A4 Financial Verification Table (KZT Million)</h2>
+        <table>
+          <thead>
+            <tr>
+              <th style="width:22%;">IFRS Metric / Ratio</th>
+              <th style="width:18%;">FY2024 Verified</th>
+              <th style="width:18%;">FY2025 Verified</th>
+              <th style="width:42%;">AI Parsing Failure vs. Human Forensic Verification</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Revenue</strong></td>
+              <td>1,813,352 (+26% YoY)</td>
+              <td>1,803,049 (-1% YoY)</td>
+              <td>Verified on Consolidated Income Statement; FY24 realized price USD 69.48/lb [3], [7].</td>
+            </tr>
+            <tr>
+              <td><strong>Operating Profit &amp; Margin</strong></td>
+              <td>806,849 (44.49%)</td>
+              <td>778,978 (43.20%)</td>
+              <td>Core operating margin changed by only -129 bps, refuting claims of operational collapse [3], [7].</td>
+            </tr>
+            <tr>
+              <td><strong>Reported vs. Adjusted Net Profit</strong></td>
+              <td>Reported: 1,132,115 (62.43%)<br>Adjusted: <strong>836,000 (46.10%)</strong><br>Owners Adj.: 576,544</td>
+              <td>Reported: 806,707 (44.74%)<br>Adjusted: <strong>807,000 (44.76%)</strong><br>Owners Adj.: 570,460</td>
+              <td>AI failed to read Note 35: FY24 reported profit included a one-time non-cash KZT 295,719m JV Budenovskoye 51% consolidation gain + KZT 15,692m Dioxitek reversal (Other Income: KZT 402,700m in FY24 vs. KZT 17,455m in FY25) [3], [7].</td>
+            </tr>
+            <tr>
+              <td><strong>Adjusted EBITDA &amp; Operating Cash Flow (OCF)</strong></td>
+              <td>Adj. EBITDA: 1,096,711<br>OCF: <strong>516,487</strong> (64.01% conv.)</td>
+              <td>Adj. EBITDA: 1,133,489 (+3%)<br>OCF: <strong>809,845</strong> (103.96% conv.)</td>
+              <td>AI missed that actual cash generation surged +56.8% YoY in FY2025 as cash conversion exceeded 100% [7].</td>
+            </tr>
+            <tr>
+              <td><strong>Balance Sheet &amp; Leverage (31 Dec 2024 &amp; FY25)</strong></td>
+              <td>Assets: 3,821,881 (+47% YoY)<br>Liabilities: 824,330 (27.50% D/E)<br>Fin. Debt: <strong>149,953 (5.00% D/E)</strong><br>Cash: 294,413 | Net: <strong>-144,460</strong></td>
+              <td>Fin. Debt: 207,653<br>Cash: 347,426<br>Net Debt: <strong>-139,773</strong> (-0.12x EBITDA)</td>
+              <td>AI conflated KZT 824,330m total liabilities with debt; human audit isolated KZT 674,377m (81.8%) as non-debt provisions/payables/deferred tax, proving negative Net Debt (-0.13x in FY24, -0.12x in FY25) and ROE of 37.77% unadj. / 27.89% adj. [3], [7], [10].</td>
+            </tr>
+            <tr>
+              <td><strong>Working Capital &amp; C1/MET Tax Anatomy</strong></td>
+              <td>Current Ratio: <strong>3.86x</strong> (1,626,539 / 420,985)<br>Op WC Ratio: <strong>3.65x</strong><br>Net WC: <strong>966,941</strong><br>U<sub>3</sub>O<sub>8</sub> Inv.: 388,157 (6,334 tU)<br>VAT: 219,672 | MET: 91,487 (30%)</td>
+              <td>Op WC Ratio: <strong>4.19x</strong> (1,231,142 / 293,835)<br>Net WC: <strong>937,307</strong><br>U<sub>3</sub>O<sub>8</sub> Inv.: 415,319 (6,636 tU)<br>VAT: 274,180 | MET: 137,186 (36%)<br>C1: <strong>USD 18.06/lb</strong></td>
+              <td>AI missed the KZT 966,941m working capital lock-up, the May 2025 AGM NCI-adjusted FCF dividend formula (deducting 49% NCI at Ortalyk &amp; Budenovskoye), and the FY26 C1 guidance jump to USD 23.50–25.00/lb [3], [7], [10].</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2>5.2 Unified Running Evidence Folder (IEEE Format)</h2>
+        <ol>
+          <li>[1] OpenStax, <em>Introduction to Business</em>, 2nd ed. Houston, TX, USA: OpenStax, Rice University, 2024–2026. [Online]. Available: <a href="https://openstax.org/details/books/introduction-business">https://openstax.org/details/books/introduction-business</a></li>
+          <li>[2] G. Yeshenkulova, N. Ibadildin, and M. Tleubayeva, <em>Business Administration</em>, 1st ed. Almaty, Kazakhstan: ZIALY BASPASY, 2026, ISBN 978-601-08-4281-6, pp. 115–150.</li>
+          <li>[3] NAC Kazatomprom JSC, "Kazatomprom announces 2024 full year financial results (Audited consolidated IFRS financial statements, Notes 18–35)," Astana, Kazakhstan, Mar. 19, 2025. [Online]. Available: <a href="https://www.kazatomprom.kz/en/media/view/kazatomprom_announces_2024_full_year_financial____results">https://www.kazatomprom.kz/en/media/view/kazatomprom_announces_2024_full_year_financial____results</a></li>
+          <li>[4] NAC Kazatomprom JSC, "Integrated annual report 2024 &amp; Integrated annual report 2025," Astana, Kazakhstan, 2025–2026. [Online]. Available: <a href="https://www.kazatomprom.kz/storage/cc/integrated_annual_report_2025.pdf">https://www.kazatomprom.kz/storage/cc/integrated_annual_report_2025.pdf</a></li>
+          <li>[5] Cameco Corporation, "2024 &amp; 2025 annual reports: Management's discussion and analysis and consolidated financial statements," Saskatoon, SK, Canada, 2025–2026. [Online]. Available: <a href="https://www.cameco.com/invest/financial-information/annual-reports/2025">https://www.cameco.com/invest/financial-information/annual-reports/2025</a></li>
+          <li>[6] International Atomic Energy Agency (IAEA), <em>Manual of Acid In Situ Leach Uranium Recovery Technology</em>, IAEA-TECDOC-1239, Vienna, Austria; and OECD NEA &amp; IAEA, <em>Uranium 2024: Resources, Production and Demand ("Red Book")</em>, Paris, France, 2024.</li>
+          <li>[7] NAC Kazatomprom JSC, "Operating and financial review for 2025 and 2025 full year financial results," Astana, Kazakhstan, Mar. 20, 2026. [Online]. Available: <a href="https://www.kazatomprom.kz/en/media/view/announces_2025_full_year_financial_results_">https://www.kazatomprom.kz/en/media/view/announces_2025_full_year_financial_results_</a></li>
+          <li>[8] H. J. Wilson and P. R. Daugherty, "Collaborative intelligence: Humans and AI are joining forces," <em>Harvard Business Review</em>, vol. 96, no. 4, pp. 114–123, Jul.–Aug. 2018; and T. H. Davenport and R. Ronanki, "Artificial intelligence for the real world," <em>Harvard Business Review</em>, vol. 96, no. 1, pp. 108–116, Jan.–Feb. 2018.</li>
+          <li>[9] E. Brynjolfsson and A. McAfee, <em>The Second Machine Age: Work, Progress, and Prosperity in a Time of Brilliant Technologies</em>. New York, NY, USA: W. W. Norton &amp; Company, 2014; and A. Agrawal, J. Gans, and A. Goldfarb, <em>Prediction Machines: The Simple Economics of Artificial Intelligence</em>. Boston, MA, USA: Harvard Business Review Press, 2018.</li>
+          <li>[10] Samruk-Kazyna JSC, "Sustainability report: AI and digital transformation across the Fund Group (62 AI projects, 236,000 trained)," Astana, Kazakhstan, 2025–2026 [<a href="https://sk.kz/ar2025/en/production-mining.html">https://sk.kz/ar2025/en/production-mining.html</a>]; Cbonds KAP Indicators (<a href="https://cbonds.com/stocks/US63253R2013/">https://cbonds.com/stocks/US63253R2013/</a>); and Republic of Kazakhstan Law "On Artificial Intelligence" (2025) &amp; Subsoil Use Code Amendments (Dec. 26, 2025).</li>
+        </ol>
+      </div>
+    </section>
+    
+    <!-- SECTION 06 -->
+    <section class="tab-panel" id="panel-6">
+      <div class="panel-header">
+        <h1>Section 06 — Responsible AI Use Declaration (Summary &amp; Companion Official Form)</h1>
+        <button class="copy-btn" onclick="copyPanel(6)">Скопировать раздел для Google Sites</button>
+      </div>
+      <div class="panel-content" id="content-6">
+        <p><em>Note: A standalone 6-page Official AITU Capstone AI-Use Declaration (<code>Temerbekova_AIB2604_BA2026_Capstone_AI_Use_Declaration.pdf</code> / <code>.docx</code>) following the exact Sections A–H structure is provided alongside this Master Guide.</em></p>
+        <table>
+          <thead>
+            <tr>
+              <th style="width:24%;">Declaration Field</th>
+              <th style="width:76%;">Verified Disclosure Record (Temerbekova Tamilya, ID: 260060, AIB-2604)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>AI-Use Level</strong></td><td><strong>Level 2 — AI-Assisted Structuring, Analytical Verification &amp; Editorial Visual Mockups with Full Human Verification</strong>.</td></tr>
+            <tr><td><strong>Systems Used</strong></td><td>ChatGPT (GPT-4o / OpenAI) for outlining, table formatting, and prose conciseness; Cbonds &amp; LSE/AIX portals for financial series cross-checking; AI image generation for 3 illustrative slide visuals (Slides 1, 8, 11).</td></tr>
+            <tr><td><strong>Key AI Errors Caught &amp; Corrected by Student</strong></td><td>(1) Caught AI's false 1,769 bps margin-collapse claim by auditing IFRS Note 35 (KZT 295,719m Budenovskoye paper gain vs. +56.8% FY25 OCF surge to KZT 809,845m). (2) Identified that generic AI misclassified KZT 415,319m (6,636 tU) of strategic TITR uranium inventory and KZT 274,180m of recoverable VAT as 'idle cash' rather than operational working capital. (3) Corrected early Week 1–3 Samruk-Kazyna ownership estimate (~75%) to exact audited 62.99%. (4) Separated KZT 674,377m non-debt liabilities from KZT 149,953m financial debt (-0.13x Net Debt/EBITDA).</td></tr>
+            <tr><td><strong>Compliance</strong></td><td>Zero restricted course textbooks or confidential files uploaded to AI; all claims verified against primary audited PDF filings.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+    
+    <!-- SECTION 07 -->
+    <section class="tab-panel" id="panel-7">
+      <div class="panel-header">
+        <h1>Section 07 — Professional Reflection &amp; Google Sites Production Checklist</h1>
+        <button class="copy-btn" onclick="copyPanel(7)">Скопировать раздел для Google Sites</button>
+      </div>
+      <div class="panel-content" id="content-7">
+        <p>Across Weeks 1–10 of BA2026, my managerial judgment evolved through three turning points: (1) moving from generic AI optimism in Week 1 to hard 85% confidence gates, dual human verification, and SCADA fallbacks after mapping data leakage and hallucination risks in Week 7; (2) replacing blind imitation of Cameco's 49% Westinghouse M&amp;A with sovereign adaptation tailored to Kazatomprom's 62.99% state ownership, 75%+ NCI-adjusted FCF dividend rule, and domestic 200 tU Ulba-FA plant; and (3) proving in Week 8 that forensic IFRS footnote literacy is the decisive capability that separates an AI-augmented manager from an uncritical operator.</p>
+      </div>
+    </section>
+    
+  </div>
+
+  <div class="toast" id="toast">Текст раздела скопирован в буфер обмена!</div>
+
+  <script>
+    function showTab(idx) {
+      document.querySelectorAll('.tab-btn').forEach((b, i) => {
+        b.classList.toggle('active', i === idx);
+      });
+      document.querySelectorAll('.tab-panel').forEach((p, i) => {
+        p.classList.toggle('active', i === idx);
+      });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function copyPanel(idx) {
+      const el = document.getElementById('content-' + idx);
+      const range = document.createRange();
+      range.selectNodeContents(el);
+      const selection = window.getSelection();
+      selection.removeAllRanges();
+      selection.addRange(range);
+      try {
+        const successful = document.execCommand('copy');
+        if (successful) {
+          const t = document.getElementById('toast');
+          t.style.display = 'block';
+          setTimeout(() => { t.style.display = 'none'; }, 2500);
+        } else {
+          alert('Failed to copy text.');
+        }
+      } catch (err) {
+        alert('Browser does not support clipboard execution.');
+      }
+      selection.removeAllRanges();
+    }
+  </script>
+</body>
+</html>
